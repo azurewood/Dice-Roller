@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dice Roller</title>
+</head>
+
+<body>
+
+    <label for="numberOfFaces">Choose Faces of Dice</label>
+    <input id="numberOfFaces" value="6"></input>
+    <button onclick="roll()" id="roll">ROLL!!</button>
+    <script>
+        function roll() {
+
+            let faces = document.getElementById("numberOfFaces").value;
+            let result = Math.floor(Math.random() * parseInt(faces)) + 1;
+            let row = [];
+            row.push(result);
+            row.push(faces);
+            row.push(tableArr.length);
+            tableArr.push(row);
+            //console.log(tableArr);
+
+            table.insertRow();
+            //Iterate over every index(cell) in each array(row)
+            for (let cell of row) {
+                //While iterating over the index(cell)
+                //insert a cell into the table element
+                let newCell = table.rows[table.rows.length - 1].insertCell();
+                //add text to the created cell element
+                newCell.textContent = cell;
+            }
+        }
+
+        //setup our table array
+        //https://medium.com/wdstack/quick-blurb-generating-a-table-from-an-array-in-javascript-41386fd449a9
+        var tableArr = [
+            ["Roll Number#", "of faces", "Result"],
+        ]
+        //create a Table Object
+        let table = document.createElement('table');
+        //iterate over every array(row) within tableArr
+        for (let row of tableArr) {
+            //Insert a new row element into the table element
+            table.insertRow();
+            //Iterate over every index(cell) in each array(row)
+            for (let cell of row) {
+                //While iterating over the index(cell)
+                //insert a cell into the table element
+                let newCell = table.rows[table.rows.length - 1].insertCell();
+                //add text to the created cell element
+                newCell.textContent = cell;
+            }
+        }
+        //append the compiled table to the DOM
+        document.body.appendChild(table);
+    </script>
+
+</body>
+
+</html>

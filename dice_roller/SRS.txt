@@ -1,0 +1,10 @@
+Software Requirements Specification
+
+for devsInc
+
+Version 1.0
+Prepared by Jian Zhou
+IOD student
+18 Feb 2023
+
+devsInc want to support people with playing tabletop games from online and they require a Dice Generator. 

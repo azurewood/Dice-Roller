@@ -14,7 +14,16 @@
         function roll() {
 
             let faces = document.getElementById("numberOfFaces").value;
+            if(faces<2)
+                return;
             let result = Math.floor(Math.random() * parseInt(faces)) + 1;
+
+            //unit testing 
+            if(result>parseInt(faces))
+                throw new Error("Result should not be greater than number of faces");
+            else if(result<1)
+                throw new Error("Result should not be lesser than one");
+
             let row = [];
             row.push(result);
             row.push(faces);

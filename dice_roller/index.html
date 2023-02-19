@@ -3,13 +3,20 @@
 
 <head>
     <title>Dice Roller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <label for="numberOfFaces">Choose Faces of Dice</label>
-    <input id="numberOfFaces" value="6"></input>
-    <button onclick="roll()" id="roll">ROLL!!</button>
+    <h1 class="header">Dice Roller
+        <img id="dice" src="dice.png">
+    </h1>
+    <label for="numberOfFaces" class="col-1 right">Please Choose Faces of Dice</label>
+    <input id="numberOfFaces" value="6" class="col-1 right"></input>
+    <label for="youRolled" class="col-1 right">You Rolled:</label>
+    <input id="youRolled" value="6" readonly class="col-1 right"></input>
+    <button onclick="roll()" id="roll" class="col-3 right">ROLL!!</button>
     <script>
         function roll() {
 
@@ -17,6 +24,8 @@
             if(faces<2)
                 return;
             let result = Math.floor(Math.random() * parseInt(faces)) + 1;
+
+            document.getElementById("youRolled").value=result;
 
             //unit testing 
             if(result>parseInt(faces))
@@ -49,6 +58,7 @@
         ]
         //create a Table Object
         let table = document.createElement('table');
+        table.classList.add("col-4", "right", "aside");
         //iterate over every array(row) within tableArr
         for (let row of tableArr) {
             //Insert a new row element into the table element
